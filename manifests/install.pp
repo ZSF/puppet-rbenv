@@ -28,7 +28,7 @@ define rbenv::install ( $user ) {
 
   # STEP 2
   exec { "rbenv::install::${user}::add_path_to_bashrc":
-    command => "echo \"export PATH=${root_dir}/${install_dir}/bin:\$PATH\" >> .bashrc",
+    command => "echo \"export PATH=${root_dir}/${install_dir}/bin:${root_dir}/${install_dir}/shims:\$PATH\" >> .bashrc",
     user    => $user,
     group   => $user,
     cwd     => $home_dir,
